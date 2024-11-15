@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwxy2bdx7qpu6"]
+
+[ext_resource type="Script" path="res://jugador.gd" id="1_ptjfk"]
+
+[node name="Overworld" type="Node2D"]
+
+[node name="jugador" type="Sprite2D" parent="."]
+script = ExtResource("1_ptjfk")
