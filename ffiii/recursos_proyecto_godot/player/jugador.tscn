@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7awi0tke1c0y"]
+
+[ext_resource type="Script" path="res://recursos_proyecto_godot/player/character_body_2d.gd" id="1_nhfuw"]
+[ext_resource type="Texture2D" uid="uid://c5d823j3uvc03" path="res://recursos_proyecto_godot/graphics/characters/rubenco.png" id="2_ts8uc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xfao"]
+
+[node name="jugador" type="Sprite2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_nhfuw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_7xfao")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_ts8uc")

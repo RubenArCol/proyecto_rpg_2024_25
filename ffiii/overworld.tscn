@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dwxy2bdx7qpu6"]
 
-[ext_resource type="Script" path="res://jugador.gd" id="1_ptjfk"]
+[ext_resource type="PackedScene" uid="uid://b7awi0tke1c0y" path="res://recursos_proyecto_godot/player/jugador.tscn" id="1_eooou"]
 
 [node name="Overworld" type="Node2D"]
 
-[node name="jugador" type="Sprite2D" parent="."]
-script = ExtResource("1_ptjfk")
+[node name="jugador" parent="." instance=ExtResource("1_eooou")]
