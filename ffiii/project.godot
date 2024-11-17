@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FFIII"
-run/main_scene="res://recursos_proyecto_godot/player/jugador.tscn"
+run/main_scene="res://recursos_proyecto_godot/maps/firstCave.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
