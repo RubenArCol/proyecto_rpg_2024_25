@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cw7aqtgxlk784"]
 
-[ext_resource type="Script" path="res://recursos_proyecto_godot/teleport.gd" id="1_xpevy"]
+[ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/teleport.gd" id="1_xpevy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it4ys"]
 
