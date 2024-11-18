@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuv5ja76yjxrx"]
+
+[ext_resource type="AudioStream" uid="uid://u0av0dmkcaqe" path="res://recursos_proyecto_godot/music/overworld/overworld.mp3" id="1_ea6l2"]
+
+[node name="Audio" type="AudioStreamPlayer"]
+stream = ExtResource("1_ea6l2")
+autoplay = true
+parameters/looping = true

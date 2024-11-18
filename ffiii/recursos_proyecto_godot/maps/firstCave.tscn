@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://dipbiqooqjhtw"]
+[gd_scene load_steps=11 format=4 uid="uid://dipbiqooqjhtw"]
 
 [ext_resource type="Texture2D" uid="uid://bhavag74fnig" path="res://recursos_proyecto_godot/graphics/tiles/BaseSet.png" id="1_y3tpn"]
-[ext_resource type="Texture2D" uid="uid://b2p4pyngqo6cm" path="res://recursos_proyecto_godot/graphics/furniture/Chest.png" id="2_6ubf8"]
+[ext_resource type="Texture2D" uid="uid://b2p4pyngqo6cm" path="res://recursos_proyecto_godot/graphics/tiles/Chest.png" id="2_6ubf8"]
 [ext_resource type="Texture2D" uid="uid://ei8xny32p2gw" path="res://recursos_proyecto_godot/graphics/tiles/CaveTilemap.png" id="3_jm2e1"]
 [ext_resource type="PackedScene" uid="uid://cw7aqtgxlk784" path="res://recursos_proyecto_godot/Reusable_Functions/Teleport.tscn" id="4_7gsix"]
+[ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="5_jvnlg"]
 
 [sub_resource type="GDScript" id="GDScript_nkw6d"]
 script/source = "extends Node2D
@@ -2337,6 +2338,8 @@ position = Vector2(792, 297)
 
 [node name="Destination" parent="b2_b1" index="1"]
 position = Vector2(-560, -329)
+
+[node name="Audio" parent="." instance=ExtResource("5_jvnlg")]
 
 [editable path="b1_b2"]
 [editable path="b2_b1"]
