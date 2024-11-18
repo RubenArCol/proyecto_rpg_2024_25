@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://dipbiqooqjhtw"]
+[gd_scene load_steps=10 format=4 uid="uid://dipbiqooqjhtw"]
 
 [ext_resource type="Texture2D" uid="uid://bhavag74fnig" path="res://recursos_proyecto_godot/graphics/tiles/BaseSet.png" id="1_y3tpn"]
 [ext_resource type="Texture2D" uid="uid://b2p4pyngqo6cm" path="res://recursos_proyecto_godot/graphics/furniture/Chest.png" id="2_6ubf8"]
 [ext_resource type="Texture2D" uid="uid://ei8xny32p2gw" path="res://recursos_proyecto_godot/graphics/tiles/CaveTilemap.png" id="3_jm2e1"]
+[ext_resource type="PackedScene" uid="uid://cw7aqtgxlk784" path="res://recursos_proyecto_godot/Reusable_Functions/Teleport.tscn" id="4_7gsix"]
 
 [sub_resource type="GDScript" id="GDScript_nkw6d"]
 script/source = "extends Node2D
@@ -1320,3 +1321,19 @@ polygon = PackedVector2Array(1024, 833, 1039, 833, 1039, 862, 882, 861, 882, 846
 
 [node name="b4_2" type="CollisionPolygon2D" parent="background/Collisions"]
 polygon = PackedVector2Array(721, 732, 737, 732, 737, 749, 754, 749, 754, 765, 768, 765, 768, 749, 782, 749, 782, 735, 799, 735, 799, 719, 782, 719, 782, 703, 767, 703, 767, 687, 751, 687, 751, 703, 736, 703, 736, 718, 721, 718)
+
+[node name="b1_b2" parent="." instance=ExtResource("4_7gsix")]
+position = Vector2(232, -56)
+
+[node name="Destination" parent="b1_b2" index="1"]
+position = Vector2(560, 328)
+rotation = 3.14159
+
+[node name="b2_b1" parent="." instance=ExtResource("4_7gsix")]
+position = Vector2(792, 297)
+
+[node name="Destination" parent="b2_b1" index="1"]
+position = Vector2(-560, -329)
+
+[editable path="b1_b2"]
+[editable path="b2_b1"]

@@ -7,7 +7,7 @@
 
 [node name="jugador" type="Sprite2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
 scale = Vector2(0.02, 0.02)
 script = ExtResource("1_nhfuw")
 
