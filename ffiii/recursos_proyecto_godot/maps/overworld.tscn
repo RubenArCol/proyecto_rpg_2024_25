@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwxy2bdx7qpu6"]
+[gd_scene load_steps=3 format=3 uid="uid://dwxy2bdx7qpu6"]
 
 [ext_resource type="PackedScene" uid="uid://b7awi0tke1c0y" path="res://recursos_proyecto_godot/player/jugador.tscn" id="1_eooou"]
+[ext_resource type="TileSet" uid="uid://c4v0oo5crbx3f" path="res://recursos_proyecto_godot/graphics/tiles.tres" id="2_t5ugl"]
 
 [node name="Overworld" type="Node2D"]
 
 [node name="jugador" parent="." instance=ExtResource("1_eooou")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_t5ugl")
