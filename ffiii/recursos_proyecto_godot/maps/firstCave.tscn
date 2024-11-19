@@ -2,30 +2,13 @@
 
 [ext_resource type="TileSet" uid="uid://c4v0oo5crbx3f" path="res://recursos_proyecto_godot/graphics/tiles.tres" id="1_grfyp"]
 [ext_resource type="PackedScene" uid="uid://cw7aqtgxlk784" path="res://recursos_proyecto_godot/Reusable_Functions/Teleport.tscn" id="4_7gsix"]
+[ext_resource type="PackedScene" uid="uid://b7awi0tke1c0y" path="res://recursos_proyecto_godot/player/jugador.tscn" id="4_35y6m"]
 [ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="5_jvnlg"]
-
-[sub_resource type="GDScript" id="GDScript_nkw6d"]
-script/source = "extends Node2D
-
-#ruta jugador
-@export var jugador_scene: PackedScene = preload(\"res://recursos_proyecto_godot/player/jugador.tscn\")
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	#instancio jugador
-	var jugador = jugador_scene.instantiate()
-	
-	#añado posicion
-	jugador.position = Vector2(160, 223)
-	
-	#añado jugador a escena
-	add_child(jugador)
-"
 
 [node name="FirstCave" type="Node2D"]
 
-[node name="FirstSpawn" type="Node2D" parent="."]
-script = SubResource("GDScript_nkw6d")
+[node name="jugador" parent="." instance=ExtResource("4_35y6m")]
+position = Vector2(162, 221)
 
 [node name="background" type="Node2D" parent="."]
 
@@ -52,7 +35,7 @@ tile_set = ExtResource("1_grfyp")
 [node name="Collisions" type="StaticBody2D" parent="background"]
 
 [node name="b1" type="CollisionPolygon2D" parent="background/Collisions"]
-polygon = PackedVector2Array(225, -61, 239, -61, 239, -19, 175, -19, 175, -32, 162, -32, 162, -51, 110, -51, 110, -20, 94, -20, 94, -4, 78, -4, 78, 36, 110, 36, 110, 51, 114, 51, 114, 62, 127, 62, 127, 77, 112, 78, 111, 124, 95, 127, 95, 188, 79, 191, 79, 244, 146, 243, 146, 211, 173, 211, 173, 269, 162, 269, 162, 253, 109, 253, 109, 285, 68, 286, 66, 269, 19, 270, 19, 245, 48, 242, 48, 228, 64, 227, 65, 163, 81, 162, 81, 125, 66, 125, 66, 111, 50, 111, 51, 78, 35, 78, 36, 62, 48, 62, 48, 51, 51, 48, 51, 36, 66, 34, 67, -19, 77, -21, 77, -29, 98, -29, 98, -61, 177, -60, 177, -52, 190, -52, 191, -30, 224, -31, 225, -56, 198, -79, 0, -79, 0, 305, 255, 304, 256, -80, 204, -79, 225, -57)
+polygon = PackedVector2Array(225, -61, 239, -61, 239, -19, 175, -19, 175, -32, 162, -32, 162, -51, 110, -51, 110, -20, 94, -20, 94, -4, 78, -4, 78, 36, 110, 36, 110, 51, 114, 51, 114, 62, 127, 62, 127, 77, 112, 78, 111, 124, 95, 127, 95, 188, 79, 191, 79, 244, 146, 243, 146, 211, 173, 211, 173, 269, 162, 269, 162, 253, 109, 253, 109, 285, 68, 286, 66, 269, 19, 270, 19, 245, 48, 242, 48, 228, 64, 227, 65, 163, 81, 162, 81, 125, 66, 125, 66, 111, 50, 111, 51, 78, 35, 78, 36, 62, 48, 62, 48, 51, 51, 48, 51, 36, 66, 34, 67, -19, 77, -21, 77, -29, 98, -29, 98, -61, 177, -60, 177, -52, 190, -52, 191, -30, 224, -31, 225, -56, 203, -79, 0, -79, 0, 305, 255, 304, 256, -80, 204, -79, 225, -57)
 
 [node name="b2" type="CollisionPolygon2D" parent="background/Collisions"]
 polygon = PackedVector2Array(784, 304, 800, 304, 800, 207, 930, 207, 930, 193, 814, 193, 814, 163, 798, 162, 798, 147, 766, 146, 766, 30, 781, 28, 781, 15, 847, 15, 852, 31, 866, 31, 866, 45, 893, 45, 893, 30, 909, 29, 910, 14, 974, 14, 979, 3, 992, 0, 995, -13, 1006, -13, 1006, -51, 994, -51, 994, -30, 961, -30, 962, 1, 925, 0, 925, -13, 897, -13, 897, 5, 781, 3, 781, -13, 765, -13, 765, -45, 734, -45, 734, -33, 722, -33, 723, 1, 718, 4, 689, 4, 690, 18, 687, 20, 674, 20, 674, 35, 574, 34, 574, -44, 559, -46, 559, -75, 544, -75, 545, -45, 531, -45, 531, 46, 717, 45, 716, 30, 754, 30, 753, 162, 738, 164, 738, 228, 638, 227, 638, 239, 784, 238, 784, 304, 782.045, 305.84, 771, 320, 512, 320, 513, -95, 1023, -95, 1023, 320, 772, 320)
