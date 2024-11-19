@@ -8,4 +8,5 @@
 [node name="jugador" parent="." instance=ExtResource("1_eooou")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
 tile_set = ExtResource("2_t5ugl")
