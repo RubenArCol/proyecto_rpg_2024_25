@@ -15,3 +15,4 @@ position = Vector2(0, 17)
 gizmo_extents = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="tp" from="." to="." method="_on_tp"]

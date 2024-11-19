@@ -52,35 +52,37 @@ polygon = PackedVector2Array(721, 732, 737, 732, 737, 749, 754, 749, 754, 765, 7
 [node name="b5" type="CollisionPolygon2D" parent="background/Collisions"]
 polygon = PackedVector2Array(1407, 299, 1408, 0, 1616, 0, 1616, 304, 1408, 304, 1504, 256, 1504, 288, 1520, 288, 1520, 256, 1536, 256, 1536, 240, 1520, 240, 1520, 176, 1552, 176, 1552, 207, 1568, 207, 1568, 144, 1600, 144, 1600, 128, 1568, 128, 1568, 80, 1552, 80, 1552, 64, 1536, 64, 1536, 16, 1488, 16, 1488, 64, 1472, 64, 1472, 80, 1456, 80, 1456, 128, 1424, 128, 1424, 144, 1456, 144, 1456, 208, 1472, 208, 1472, 176, 1504, 176, 1504, 240, 1488, 240, 1488, 256, 1504, 256, 1406, 305)
 
-[node name="b1_b2" parent="." instance=ExtResource("4_7gsix")]
+[node name="Teleports" type="Node" parent="."]
+
+[node name="b1_b2" parent="Teleports" groups=["Teleports"] instance=ExtResource("4_7gsix")]
 position = Vector2(232, -56)
 
-[node name="Destination" parent="b1_b2" index="1"]
+[node name="Destination" parent="Teleports/b1_b2" index="1"]
 position = Vector2(560, 328)
 rotation = 3.14159
 
-[node name="b2_b1" parent="." instance=ExtResource("4_7gsix")]
+[node name="b2_b1" parent="Teleports" groups=["Teleports"] instance=ExtResource("4_7gsix")]
 position = Vector2(792, 297)
 
-[node name="Destination" parent="b2_b1" index="1"]
+[node name="Destination" parent="Teleports/b2_b1" index="1"]
 position = Vector2(-560, -329)
 
-[node name="b2_b3" parent="." instance=ExtResource("4_7gsix")]
+[node name="b2_b3" parent="Teleports" groups=["Teleports"] instance=ExtResource("4_7gsix")]
 position = Vector2(552, -73)
 
-[node name="Destination" parent="b2_b3" index="1"]
+[node name="Destination" parent="Teleports/b2_b3" index="1"]
 position = Vector2(960, 329)
 rotation = 3.14159
 
-[node name="b3_b2" parent="." instance=ExtResource("4_7gsix")]
+[node name="b3_b2" parent="Teleports" groups=["Teleports"] instance=ExtResource("4_7gsix")]
 position = Vector2(1512, 281)
 
-[node name="Destination" parent="b3_b2" index="1"]
+[node name="Destination" parent="Teleports/b3_b2" index="1"]
 position = Vector2(-960, -329)
 
 [node name="Audio" parent="." instance=ExtResource("5_jvnlg")]
 
-[editable path="b1_b2"]
-[editable path="b2_b1"]
-[editable path="b2_b3"]
-[editable path="b3_b2"]
+[editable path="Teleports/b1_b2"]
+[editable path="Teleports/b2_b1"]
+[editable path="Teleports/b2_b3"]
+[editable path="Teleports/b3_b2"]

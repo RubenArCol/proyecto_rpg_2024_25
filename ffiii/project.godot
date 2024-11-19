@@ -18,10 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 Load="*res://recursos_proyecto_godot/Reusable_Functions/Load.tscn"
+Teleport="*res://recursos_proyecto_godot/Scripts/teleport.gd"
 
 [global_group]
 
 Player=""
+Teleports=""
 
 [input]
 
