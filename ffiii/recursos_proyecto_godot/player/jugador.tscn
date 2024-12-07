@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7awi0tke1c0y"]
+[gd_scene load_steps=6 format=3 uid="uid://b7awi0tke1c0y"]
 
 [ext_resource type="Script" path="res://recursos_proyecto_godot/player/character_body_2d.gd" id="1_nhfuw"]
+[ext_resource type="Resource" uid="uid://clwhaptioqtlo" path="res://recursos_proyecto_godot/inventory/player_inventory.tres" id="2_3bpkq"]
 [ext_resource type="Texture2D" uid="uid://c5d823j3uvc03" path="res://recursos_proyecto_godot/graphics/characters/rubenco.png" id="2_ts8uc"]
+[ext_resource type="PackedScene" uid="uid://da6q87m63yjs2" path="res://recursos_proyecto_godot/Reusable_Functions/inv_hud.tscn" id="4_v81qs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xfao"]
 
@@ -10,6 +12,7 @@
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
 scale = Vector2(0.02, 0.02)
 script = ExtResource("1_nhfuw")
+inv = ExtResource("2_3bpkq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_7xfao")
@@ -20,3 +23,9 @@ texture = ExtResource("2_ts8uc")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
+
+[node name="Inv_HUD" parent="CharacterBody2D" instance=ExtResource("4_v81qs")]
+offset_left = -350.0
+offset_top = -300.0
+offset_right = -310.0
+offset_bottom = -260.0

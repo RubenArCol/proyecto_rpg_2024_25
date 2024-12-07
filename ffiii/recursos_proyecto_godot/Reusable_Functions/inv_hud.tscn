@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://da6q87m63yjs2"]
+
+[ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/inv_hud.gd" id="1_ef02s"]
+[ext_resource type="Texture2D" uid="uid://d1bowqq2ksd5x" path="res://recursos_proyecto_godot/graphics/tiles/inv_bg.png" id="2_3178l"]
+
+[node name="Inv_HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ef02s")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1244.0
+offset_bottom = 926.0
+texture = ExtResource("2_3178l")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
