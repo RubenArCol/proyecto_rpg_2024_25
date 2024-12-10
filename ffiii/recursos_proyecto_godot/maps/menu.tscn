@@ -42,8 +42,37 @@ text = "Opciones"
 layout_mode = 2
 text = "Salir"
 
+[node name="OptionsPopup" type="Popup" parent="."]
+
+[node name="vboxOpciones" type="VBoxContainer" parent="OptionsPopup"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="txtVolumen" type="Label" parent="OptionsPopup/vboxOpciones"]
+layout_mode = 2
+text = "Volumen"
+
+[node name="sldVolumen" type="HSlider" parent="OptionsPopup/vboxOpciones"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="btnMovimiento" type="Button" parent="OptionsPopup/vboxOpciones"]
+layout_mode = 2
+text = "Configurar movimiento
+(no implementado todavía)"
+
+[node name="btnCerrar" type="Button" parent="OptionsPopup/vboxOpciones"]
+layout_mode = 2
+text = "Cerrar
+"
+
 [node name="Audio" parent="." instance=ExtResource("3_htms1")]
 stream = ExtResource("4_h8jdl")
 
 [connection signal="pressed" from="VBoxContainer/btnInicio" to="." method="_on_btn_inicio_pressed"]
+[connection signal="pressed" from="VBoxContainer/btnOpciones" to="." method="_on_btn_opciones_pressed"]
 [connection signal="pressed" from="VBoxContainer/btnSalir" to="." method="_on_btn_salir_pressed"]
+[connection signal="value_changed" from="OptionsPopup/vboxOpciones/sldVolumen" to="." method="_on_sld_volumen_value_changed"]
+[connection signal="pressed" from="OptionsPopup/vboxOpciones/btnMovimiento" to="." method="_on_btn_movimiento_pressed"]
+[connection signal="pressed" from="OptionsPopup/vboxOpciones/btnCerrar" to="." method="_on_btn_cerrar_pressed"]
