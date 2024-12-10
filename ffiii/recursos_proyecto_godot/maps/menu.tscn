@@ -43,6 +43,7 @@ layout_mode = 2
 text = "Salir"
 
 [node name="OptionsPopup" type="Popup" parent="."]
+size = Vector2i(218, 136)
 
 [node name="vboxOpciones" type="VBoxContainer" parent="OptionsPopup"]
 offset_right = 40.0
@@ -67,6 +68,119 @@ layout_mode = 2
 text = "Cerrar
 "
 
+[node name="ControlsPopup" type="Popup" parent="."]
+auto_translate_mode = 1
+size = Vector2i(236, 303)
+visible = true
+
+[node name="VBoxControles" type="VBoxContainer" parent="ControlsPopup"]
+clip_contents = true
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="txtControles" type="Label" parent="ControlsPopup/VBoxControles"]
+layout_mode = 2
+text = "¿Que control quieres cambiar?"
+horizontal_alignment = 1
+
+[node name="HBox_up" type="HBoxContainer" parent="ControlsPopup/VBoxControles"]
+layout_mode = 2
+alignment = 1
+
+[node name="txtControles2" type="Label" parent="ControlsPopup/VBoxControles/HBox_up"]
+layout_mode = 2
+text = "Arriba:"
+
+[node name="Button" type="Button" parent="ControlsPopup/VBoxControles/HBox_up"]
+layout_mode = 2
+toggle_mode = true
+text = "Arriba"
+
+[node name="HBox_down" type="HBoxContainer" parent="ControlsPopup/VBoxControles"]
+layout_mode = 2
+alignment = 1
+
+[node name="txtControles3" type="Label" parent="ControlsPopup/VBoxControles/HBox_down"]
+layout_mode = 2
+text = "Abajo: "
+
+[node name="Button" type="Button" parent="ControlsPopup/VBoxControles/HBox_down"]
+layout_mode = 2
+toggle_mode = true
+text = "Abajo"
+
+[node name="HBox_left" type="HBoxContainer" parent="ControlsPopup/VBoxControles"]
+layout_mode = 2
+alignment = 1
+
+[node name="txtControles4" type="Label" parent="ControlsPopup/VBoxControles/HBox_left"]
+layout_mode = 2
+text = "Izquierda: "
+
+[node name="Button" type="Button" parent="ControlsPopup/VBoxControles/HBox_left"]
+layout_mode = 2
+toggle_mode = true
+text = "Izquierda"
+
+[node name="HBox_right" type="HBoxContainer" parent="ControlsPopup/VBoxControles"]
+layout_mode = 2
+alignment = 1
+
+[node name="txtControles5" type="Label" parent="ControlsPopup/VBoxControles/HBox_right"]
+layout_mode = 2
+text = "Derecha:"
+
+[node name="Button" type="Button" parent="ControlsPopup/VBoxControles/HBox_right"]
+layout_mode = 2
+toggle_mode = true
+text = "Derecha"
+
+[node name="HBox_interaction" type="HBoxContainer" parent="ControlsPopup/VBoxControles"]
+layout_mode = 2
+alignment = 1
+
+[node name="txtControles6" type="Label" parent="ControlsPopup/VBoxControles/HBox_interaction"]
+layout_mode = 2
+text = "Interactuar: "
+
+[node name="Button" type="Button" parent="ControlsPopup/VBoxControles/HBox_interaction"]
+layout_mode = 2
+toggle_mode = true
+text = "Interactuar"
+
+[node name="HBox_pause" type="HBoxContainer" parent="ControlsPopup/VBoxControles"]
+layout_mode = 2
+alignment = 1
+
+[node name="txtControles7" type="Label" parent="ControlsPopup/VBoxControles/HBox_pause"]
+layout_mode = 2
+text = "Pausa: "
+
+[node name="Button" type="Button" parent="ControlsPopup/VBoxControles/HBox_pause"]
+layout_mode = 2
+toggle_mode = true
+text = "Pausa"
+
+[node name="HBox_inventory" type="HBoxContainer" parent="ControlsPopup/VBoxControles"]
+layout_mode = 2
+alignment = 1
+
+[node name="txtControles8" type="Label" parent="ControlsPopup/VBoxControles/HBox_inventory"]
+layout_mode = 2
+text = "Inventario: "
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ControlsPopup/VBoxControles/HBox_inventory"]
+layout_mode = 2
+toggle_mode = true
+text = "Inventario"
+
+[node name="btnCerrarControles" type="Button" parent="ControlsPopup/VBoxControles"]
+layout_mode = 2
+text = "Cerrar"
+icon_alignment = 1
+
 [node name="Audio" parent="." instance=ExtResource("3_htms1")]
 stream = ExtResource("4_h8jdl")
 
@@ -76,3 +190,12 @@ stream = ExtResource("4_h8jdl")
 [connection signal="value_changed" from="OptionsPopup/vboxOpciones/sldVolumen" to="." method="_on_sld_volumen_value_changed"]
 [connection signal="pressed" from="OptionsPopup/vboxOpciones/btnMovimiento" to="." method="_on_btn_movimiento_pressed"]
 [connection signal="pressed" from="OptionsPopup/vboxOpciones/btnCerrar" to="." method="_on_btn_cerrar_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_up/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_down/Button" to="." method="_on_down_button_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_left/Button" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_right/Button" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_interaction/Button" to="." method="_on_int_button_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_pause/Button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_inventory/Button" to="." method="_on_inv_button_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_controles_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_pressed"]
