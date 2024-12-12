@@ -2,6 +2,10 @@ extends Control
 
 signal textbox_closed
 
+@export var enemy_resources:Array = [
+	preload("res://recursos_proyecto_godot/graphics/characters/enemies/undead_knight.tres"),
+	preload("res://recursos_proyecto_godot/graphics/characters/enemies/bat.tres")
+]
 @export var enemy:Resource = null
 
 var current_player_health = 0
@@ -10,6 +14,8 @@ var defending = false
 
 func _ready():
 	print("%d para subir" % Player.exp_to_level_up)
+	randomize()
+	enemy = enemy_resources[randi() % enemy_resources.size()]
 	
 	set_health($enemy_container/ProgressBar, enemy.health, enemy.health)
 	$enemy_container/enemy.texture = enemy.texture
