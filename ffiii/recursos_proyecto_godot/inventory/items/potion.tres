@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://fikllyhkyv1x"]
-
-[ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/inventory_item.gd" id="1_drb40"]
-[ext_resource type="Texture2D" uid="uid://qyw0nlfs4grl" path="res://recursos_proyecto_godot/graphics/imgs/potion.png" id="2_s0nnk"]
-
-[resource]
-script = ExtResource("1_drb40")
-name = "potion"
-texture = ExtResource("2_s0nnk")

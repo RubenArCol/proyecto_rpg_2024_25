@@ -14,8 +14,6 @@ var player_potion_counter = 1 # set to 1 for debugging
 
 var exp_to_level_up = 0
 
-# player's inventory
-@export var inv: Inv 
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 func _ready() -> void:

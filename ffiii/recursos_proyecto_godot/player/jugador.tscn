@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7awi0tke1c0y"]
+[gd_scene load_steps=9 format=3 uid="uid://b7awi0tke1c0y"]
 
 [ext_resource type="Script" path="res://recursos_proyecto_godot/player/character_body_2d.gd" id="1_nhfuw"]
-[ext_resource type="Resource" uid="uid://clwhaptioqtlo" path="res://recursos_proyecto_godot/inventory/player_inventory.tres" id="2_3bpkq"]
 [ext_resource type="Texture2D" uid="uid://ct666nkkc78hf" path="res://recursos_proyecto_godot/graphics/characters/Mobile - Pictlogica Final Fantasy - Luneth.png" id="3_a5g4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xfao"]
@@ -53,7 +52,6 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
 scale = Vector2(0.02, 0.02)
 script = ExtResource("1_nhfuw")
-inv = ExtResource("2_3bpkq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_7xfao")
