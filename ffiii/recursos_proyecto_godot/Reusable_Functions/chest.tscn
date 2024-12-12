@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://71gqidp7t6xh"]
+[gd_scene load_steps=9 format=3 uid="uid://71gqidp7t6xh"]
 
+[ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/chest.gd" id="1_3am8l"]
 [ext_resource type="Texture2D" uid="uid://b2p4pyngqo6cm" path="res://recursos_proyecto_godot/graphics/tiles/Chest.png" id="1_nnpmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oir6t"]
@@ -27,7 +28,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qs3or")
 }],
-"loop": true,
+"loop": false,
 "name": &"closed",
 "speed": 5.0
 }, {
@@ -38,8 +39,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_amrhc")
 }],
-"loop": true,
-"name": &"closed-open",
+"loop": false,
+"name": &"closedopen",
 "speed": 5.0
 }, {
 "frames": [{
@@ -52,6 +53,7 @@ animations = [{
 }]
 
 [node name="Chest" type="Area2D"]
+script = ExtResource("1_3am8l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 4)
@@ -60,4 +62,7 @@ shape = SubResource("RectangleShape2D_oir6t")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_m3je7")
-animation = &"closed-open"
+animation = &"closed"
+autoplay = "closed"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
