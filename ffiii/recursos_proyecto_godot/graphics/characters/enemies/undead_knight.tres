@@ -8,5 +8,6 @@ script = ExtResource("1_s5ool")
 name = "Caballero no-muerto"
 texture = ExtResource("2_64o2f")
 level = 1
-health = 45
+health = 30
 damage = 15
+experience = 40

@@ -1,8 +1,14 @@
 extends CharacterBody2D
 
+var contador =0
+
 var direccion:Vector2 = Vector2.ZERO
 var velocidad:int = 30
 var movement:bool = true
+
+var in_battle = false
+var last_position: Vector2
+signal encounter
 
 #player's stats
 var player_level:int = 1
@@ -13,11 +19,13 @@ var player_dmg = 20 + (3 * player_level)
 var player_potion_counter = 1 # set to 1 for debugging
 
 var exp_to_level_up = 0
+var base_exp = 100
+var factor = 1.5
 
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 func _ready() -> void:
-	exp_to_level_up = 100 + (50 * (player_level - 1))
+	exp_to_level_up = base_exp * (factor ** (player_level - 1))
 	
 	var tp_nodes = get_tree().get_nodes_in_group("Teleports") # gets every tp in the group
 	for tp_node in tp_nodes:
@@ -42,6 +50,14 @@ func _physics_process(_delta):
 		velocity = Vector2.ZERO # doesn't allow movement
 		sprite_2d.play("idle") # idle  in case the player is standing still
 	move_and_slide()
+	
+	if last_position != position:
+		if randi()%200 < 1 and not in_battle:
+			in_battle = true
+			print("Posición global del jugador:")
+			print(global_position)
+			last_position = global_position
+			emit_signal("encounter")
 
 func toggle_movement():
 	movement = not movement # Toggle movement state

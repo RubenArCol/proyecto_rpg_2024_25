@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=4 uid="uid://dipbiqooqjhtw"]
+[gd_scene load_steps=8 format=4 uid="uid://dipbiqooqjhtw"]
 
 [ext_resource type="TileSet" uid="uid://c4v0oo5crbx3f" path="res://recursos_proyecto_godot/graphics/tiles.tres" id="1_grfyp"]
+[ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/first_cave.gd" id="1_wihrd"]
 [ext_resource type="PackedScene" uid="uid://cw7aqtgxlk784" path="res://recursos_proyecto_godot/Reusable_Functions/Teleport.tscn" id="4_7gsix"]
 [ext_resource type="PackedScene" uid="uid://b7awi0tke1c0y" path="res://recursos_proyecto_godot/player/jugador.tscn" id="4_35y6m"]
-[ext_resource type="PackedScene" uid="uid://71gqidp7t6xh" path="res://recursos_proyecto_godot/Reusable_Functions/chest.tscn" id="5_3i34o"]
+[ext_resource type="PackedScene" path="res://recursos_proyecto_godot/Reusable_Functions/chest.tscn" id="5_3i34o"]
 [ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="5_jvnlg"]
+[ext_resource type="PackedScene" uid="uid://b5geksye26dcq" path="res://recursos_proyecto_godot/Reusable_Functions/battlezone.tscn" id="6_2fiy0"]
 
 [node name="FirstCave" type="Node2D"]
+script = ExtResource("1_wihrd")
 
 [node name="jugador" parent="." instance=ExtResource("4_35y6m")]
 position = Vector2(162, 221)
@@ -100,8 +103,16 @@ position = Vector2(2.5, 1)
 position = Vector2(2, 5)
 flip_v = true
 
+[node name="Area2D" parent="." instance=ExtResource("6_2fiy0")]
+visible = false
+position = Vector2(-76, -174)
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(601, 307)
+
 [editable path="Teleports/b1_b2"]
 [editable path="Teleports/b2_b1"]
 [editable path="Teleports/b2_b3"]
 [editable path="Teleports/b3_b2"]
 [editable path="Chests/Chest3"]
+[editable path="Area2D"]

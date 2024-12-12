@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://burdafqt43s1k"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b778k0ibs6gbk"]
 
 [ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/base_enemy.gd" id="1_5ihfe"]
 [ext_resource type="Texture2D" uid="uid://cexfkq3v1ypwq" path="res://recursos_proyecto_godot/graphics/characters/enemies/06b.png" id="2_wuxbw"]
@@ -8,6 +8,6 @@ script = ExtResource("1_5ihfe")
 name = "Bat"
 texture = ExtResource("2_wuxbw")
 level = 1
-health = 70
+health = 20
 damage = 15
-experience = 125
+experience = 120

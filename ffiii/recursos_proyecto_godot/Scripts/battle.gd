@@ -13,7 +13,6 @@ var current_enemy_health = 0
 var defending = false
 
 func _ready():
-	print("%d para subir" % Player.exp_to_level_up)
 	randomize()
 	enemy = enemy_resources[randi() % enemy_resources.size()]
 	
@@ -85,8 +84,8 @@ func _on_atacar_pressed() -> void:
 			
 			print("%d es la nueva cantidad de experiencia para subir" % Player.exp_to_level_up)
 		
-		# here i should load the last player position before the fight
 		get_tree().change_scene_to_file("res://recursos_proyecto_godot/maps/firstCave.tscn")
+		return  
 		
 	enemy_turn()
 	
@@ -140,4 +139,4 @@ func _on_pocion_pressed() -> void:
 		
 
 func exp_actuallization():
-	Player.exp_to_level_up = 100 + (50 * (Player.player_level - 1))
+	Player.exp_to_level_up = Player.base_exp * (Player.factor ** (Player.player_level - 1))
