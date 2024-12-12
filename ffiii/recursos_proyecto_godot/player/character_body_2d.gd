@@ -47,5 +47,5 @@ func _physics_process(_delta):
 
 func toggle_movement():
 	movement = not movement # Toggle movement state
-	await get_tree().create_timer(1.2)
+	await get_tree().create_timer(1.2).timeout
 	movement = not movement # Toggle movement state back to true
