@@ -6,7 +6,6 @@ var direccion:Vector2 = Vector2.ZERO
 var velocidad:int = 30
 var movement:bool = true
 
-var counter_signal = 0
 var in_battle = false
 var last_position: Vector2
 signal encounter
@@ -52,15 +51,13 @@ func _physics_process(_delta):
 		sprite_2d.play("idle") # idle  in case the player is standing still
 	move_and_slide()
 	
-	if last_position != position:
+	if last_position != global_position:
 		if randi()%200 < 1 and not in_battle:
-			counter_signal += 1
 			in_battle = true
-			if counter_signal == 1:
-				print("Posición global del jugador:")
-				print(global_position)
-				last_position = global_position
-				emit_signal("encounter")
+			last_position = global_position
+			print("Posición global del jugador:")
+			print(global_position)
+			emit_signal("encounter")
 
 func toggle_movement():
 	movement = not movement # Toggle movement state

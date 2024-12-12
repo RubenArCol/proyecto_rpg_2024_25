@@ -80,7 +80,7 @@ func _on_atacar_pressed() -> void:
 			display_text("¡Subiste a nivel %d!" % Player.player_level)
 			await textbox_closed
 			
-			exp_actuallization()
+			exp_actualization()
 			
 			print("%d es la nueva cantidad de experiencia para subir" % Player.exp_to_level_up)
 		
@@ -138,5 +138,5 @@ func _on_pocion_pressed() -> void:
 		await textbox_closed
 		
 
-func exp_actuallization():
+func exp_actualization():
 	Player.exp_to_level_up = Player.base_exp * (Player.factor ** (Player.player_level - 1))
