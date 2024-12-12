@@ -62,7 +62,7 @@ text = "Volumen"
 
 [node name="sldVolumen" type="HSlider" parent="OptionsPopup/vboxOpciones"]
 layout_mode = 2
-min_value = -80.0
+min_value = -40.0
 max_value = 0.0
 
 [node name="btnMovimiento" type="Button" parent="OptionsPopup/vboxOpciones"]
@@ -204,5 +204,5 @@ stream = ExtResource("4_h8jdl")
 [connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_interaction/Button" to="." method="_on_int_button_pressed"]
 [connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_pause/Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_inventory/Button" to="." method="_on_inv_button_pressed"]
-[connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_pressed"]
 [connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_controles_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_pressed"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/battle.gd" id="1_651hj"]
 [ext_resource type="Texture2D" uid="uid://cbe5q3svl7mfy" path="res://recursos_proyecto_godot/graphics/bgd/bgd_battle.png" id="1_o62un"]
-[ext_resource type="Resource" uid="uid://3gwxuqvy5tq8" path="res://recursos_proyecto_godot/graphics/characters/enemies/undead_knight.tres" id="2_h4myb"]
+[ext_resource type="Resource" uid="uid://burdafqt43s1k" path="res://recursos_proyecto_godot/graphics/characters/enemies/bat.tres" id="2_h8n6l"]
 [ext_resource type="Texture2D" uid="uid://bqx1gve663kc4" path="res://recursos_proyecto_godot/graphics/characters/enemies/07.png" id="2_r4474"]
 [ext_resource type="FontFile" uid="uid://cpblc3yh1v5nb" path="res://recursos_proyecto_godot/fonts/NESCyrillic.ttf" id="2_wjdqw"]
 [ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="5_xp8rp"]
@@ -69,22 +69,6 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Animation" id="Animation_udulo"]
-resource_name = "enemy_damaged"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("enemy_container/enemy:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_ecgcl"]
 length = 0.001
 tracks/0/type = "value"
@@ -110,6 +94,38 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_udulo"]
+resource_name = "enemy_damaged"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemy_container/enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4owgf"]
+resource_name = "enemy_death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemy_container/enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7uioo"]
@@ -144,22 +160,6 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(-3, -3), Vector2(0, 0), Vector2(3, 3), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4owgf"]
-resource_name = "enemy_death"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("enemy_container/enemy:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w0fhf"]
 _data = {
 "RESET": SubResource("Animation_ecgcl"),
@@ -177,7 +177,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_651hj")
-enemy = ExtResource("2_h4myb")
+enemy = ExtResource("2_h8n6l")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0

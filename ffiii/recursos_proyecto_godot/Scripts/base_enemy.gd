@@ -7,3 +7,4 @@ extends Resource
 @export var level: int = 1
 @export var health: int = 30*level
 @export var damage: int = 20
+@export var experience = 0

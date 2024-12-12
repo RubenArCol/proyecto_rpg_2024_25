@@ -9,6 +9,8 @@ var current_enemy_health = 0
 var defending = false
 
 func _ready():
+	print("%d para subir" % Player.exp_to_level_up)
+	
 	set_health($enemy_container/ProgressBar, enemy.health, enemy.health)
 	$enemy_container/enemy.texture = enemy.texture
 	current_enemy_health = enemy.health
@@ -57,16 +59,25 @@ func _on_atacar_pressed() -> void:
 	await textbox_closed
 	
 	if current_enemy_health == 0:
-		Player.player_level += 1
-		
 		display_text("¡%s ha sido derrotado!" % enemy.name)
 		await textbox_closed
 		
 		$AnimationPlayer.play("enemy_death")
 		await get_tree().create_timer(0.5)
 		
-		display_text("¡Subiste a nivel %d!" % Player.player_level)
+		display_text("¡Recibiste %d puntos de experiencia!" % enemy.experience)
 		await textbox_closed
+		
+		Player.player_current_exp += enemy.experience
+		
+		if (Player.player_current_exp >= Player.exp_to_level_up):
+			Player.player_level += 1
+			display_text("¡Subiste a nivel %d!" % Player.player_level)
+			await textbox_closed
+			
+			exp_actuallization()
+			
+			print("%d es la nueva cantidad de experiencia para subir" % Player.exp_to_level_up)
 		
 		# here i should load the last player position before the fight
 		get_tree().change_scene_to_file("res://recursos_proyecto_godot/maps/firstCave.tscn")
@@ -114,7 +125,13 @@ func _on_pocion_pressed() -> void:
 		
 		set_health($player_panel/player_data/ProgressBar, current_player_health, Player.health)
 		
+		display_text("Te curaste 50 puntos de salud")
+		
 		enemy_turn()
 	else:
 		display_text("No te quedan pociones...")
 		await textbox_closed
+		
+
+func exp_actuallization():
+	Player.exp_to_level_up = 100 + (50 * (Player.player_level - 1))
