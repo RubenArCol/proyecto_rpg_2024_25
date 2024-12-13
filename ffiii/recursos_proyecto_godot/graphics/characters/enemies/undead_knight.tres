@@ -1,13 +1,13 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://3gwxuqvy5tq8"]
 
 [ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/base_enemy.gd" id="1_s5ool"]
-[ext_resource type="Texture2D" uid="uid://bqx1gve663kc4" path="res://recursos_proyecto_godot/graphics/characters/enemies/07.png" id="2_64o2f"]
+[ext_resource type="Texture2D" uid="uid://bqx1gve663kc4" path="res://recursos_proyecto_godot/graphics/characters/enemies/enemy_sprites/07.png" id="2_syb7c"]
 
 [resource]
 script = ExtResource("1_s5ool")
 name = "Caballero no-muerto"
-texture = ExtResource("2_64o2f")
-level = 1
-health = 30
-damage = 15
-experience = 40
+texture = ExtResource("2_syb7c")
+level = 2
+health = 50
+damage = 20
+experience = 70

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dg48suwax1su1"]
+
+[ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/base_enemy.gd" id="1_4diag"]
+[ext_resource type="Texture2D" uid="uid://d0v71esssk3h3" path="res://recursos_proyecto_godot/graphics/characters/enemies/enemy_sprites/01.png" id="2_cy0q2"]
+
+[resource]
+script = ExtResource("1_4diag")
+name = "Enemy"
+texture = ExtResource("2_cy0q2")
+level = 1
+health = 100
+damage = 10
+experience = 75

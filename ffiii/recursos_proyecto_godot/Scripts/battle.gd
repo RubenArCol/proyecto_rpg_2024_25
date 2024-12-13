@@ -2,12 +2,17 @@ extends Control
 
 signal textbox_closed
 
+# enemes that spawn in combat zone
 @export var enemy_resources:Array = [
 	preload("res://recursos_proyecto_godot/graphics/characters/enemies/undead_knight.tres"),
-	preload("res://recursos_proyecto_godot/graphics/characters/enemies/bat.tres")
+	preload("res://recursos_proyecto_godot/graphics/characters/enemies/bat.tres"),
+	preload("res://recursos_proyecto_godot/graphics/characters/enemies/Gnomo.tres")
 ]
-@export var enemy:Resource = null
 
+# enemy used in combat
+var enemy:Resource = null
+
+# math operations applied to this variables to avoid posible errors
 var current_player_health = 0
 var current_enemy_health = 0
 var defending = false
