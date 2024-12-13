@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-var contador =0
-
+# movement
 var direccion:Vector2 = Vector2.ZERO
 var velocidad:int = 30
 var movement:bool = true
 
+# variables to star encounters
 var in_battle = false
 var last_position: Vector2
 signal encounter
@@ -27,6 +27,9 @@ var factor = 1.5
 func _ready() -> void:
 	exp_to_level_up = base_exp * (factor ** (player_level - 1))
 	
+	global_position = Global.player_position
+	print("Usando posición guardada:", global_position)
+	
 	var tp_nodes = get_tree().get_nodes_in_group("Teleports") # gets every tp in the group
 	for tp_node in tp_nodes:
 		tp_node.connect("tp", Callable(self, "toggle_movement")) # connects the function to the player
@@ -46,18 +49,20 @@ func _physics_process(_delta):
 			if (sprite_2d):
 				sprite_2d.play("idle")
 	else:
-		direccion = Vector2.ZERO # doesn't allow changing direction
-		velocity = Vector2.ZERO # doesn't allow movement
-		sprite_2d.play("idle") # idle  in case the player is standing still
+		if (sprite_2d):
+			direccion = Vector2.ZERO # doesn't allow changing direction
+			velocity = Vector2.ZERO # doesn't allow movement
+			sprite_2d.play("idle") # idle  in case the player is standing still
 	move_and_slide()
 	
-	if last_position != global_position:
-		if randi()%200 < 1 and not in_battle:
-			in_battle = true
-			last_position = global_position
-			print("Posición global del jugador:")
-			print(global_position)
-			emit_signal("encounter")
+	# generate encounters if the player is moving
+	if not in_battle and movement:
+		if direccion != Vector2.ZERO:
+			if randi() % 200 < 1:
+				Global.player_position = global_position
+				in_battle = true
+				print("Player.last_position actualizada a:", global_position)
+				emit_signal("encounter")
 
 func toggle_movement():
 	movement = not movement # Toggle movement state

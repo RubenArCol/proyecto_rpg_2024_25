@@ -18,8 +18,6 @@ func _on_body_exited(body: Node) -> void:
 		body.disconnect("encounter", Callable(self, "_on_encounter_triggered"))
 
 func _on_encounter_triggered() -> void:
-	if not is_battle_active:  # Ensure only one battle starts
-		is_battle_active = true
-		print("Battle initiated!")
-		# Change to the battle scene
-		get_tree().change_scene_to_file("res://recursos_proyecto_godot/Reusable_Functions/battle.tscn")
+	print("Battle initiated!")
+	# Change to the battle scene
+	get_tree().change_scene_to_file("res://recursos_proyecto_godot/Reusable_Functions/battle.tscn")

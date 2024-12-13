@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Load="*res://recursos_proyecto_godot/Reusable_Functions/Load.tscn"
 Teleport="*res://recursos_proyecto_godot/Scripts/teleport.gd"
 Player="*res://recursos_proyecto_godot/player/character_body_2d.gd"
+Global="*res://recursos_proyecto_godot/Scripts/globad.gd"
 
 [global_group]
 

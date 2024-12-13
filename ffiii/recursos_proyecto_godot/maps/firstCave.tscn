@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/first_cave.gd" id="1_wihrd"]
 [ext_resource type="PackedScene" uid="uid://cw7aqtgxlk784" path="res://recursos_proyecto_godot/Reusable_Functions/Teleport.tscn" id="4_7gsix"]
 [ext_resource type="PackedScene" uid="uid://b7awi0tke1c0y" path="res://recursos_proyecto_godot/player/jugador.tscn" id="4_35y6m"]
-[ext_resource type="PackedScene" path="res://recursos_proyecto_godot/Reusable_Functions/chest.tscn" id="5_3i34o"]
+[ext_resource type="PackedScene" uid="uid://71gqidp7t6xh" path="res://recursos_proyecto_godot/Reusable_Functions/chest.tscn" id="5_3i34o"]
 [ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="5_jvnlg"]
 [ext_resource type="PackedScene" uid="uid://b5geksye26dcq" path="res://recursos_proyecto_godot/Reusable_Functions/battlezone.tscn" id="6_2fiy0"]
 

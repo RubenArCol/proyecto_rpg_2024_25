@@ -13,6 +13,7 @@ var current_enemy_health = 0
 var defending = false
 
 func _ready():
+	Player.movement = false
 	randomize()
 	enemy = enemy_resources[randi() % enemy_resources.size()]
 	
@@ -84,6 +85,8 @@ func _on_atacar_pressed() -> void:
 			
 			print("%d es la nueva cantidad de experiencia para subir" % Player.exp_to_level_up)
 		
+		Player.in_battle = false
+		Player.global_position = Global.player_position
 		get_tree().change_scene_to_file("res://recursos_proyecto_godot/maps/firstCave.tscn")
 		return  
 		
