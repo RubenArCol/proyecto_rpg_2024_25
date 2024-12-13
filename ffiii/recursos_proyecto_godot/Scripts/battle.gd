@@ -86,6 +86,7 @@ func _on_atacar_pressed() -> void:
 			print("%d es la nueva cantidad de experiencia para subir" % Player.exp_to_level_up)
 		
 		Player.in_battle = false
+		Player.current_health = current_player_health
 		Player.global_position = Global.player_position
 		get_tree().change_scene_to_file("res://recursos_proyecto_godot/maps/firstCave.tscn")
 		return  
