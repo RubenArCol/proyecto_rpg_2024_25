@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_3k10o")
-name = "Enemy"
+name = "Hombre Búho"
 texture = ExtResource("2_pl7hc")
 level = 10
 health = 300

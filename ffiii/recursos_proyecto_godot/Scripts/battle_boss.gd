@@ -2,37 +2,32 @@ extends Control
 
 signal textbox_closed
 
-# enemes that spawn in combat zone
-@export var enemy_resources:Array = [
-	preload("res://recursos_proyecto_godot/graphics/characters/enemies/undead_knight.tres"),
-	preload("res://recursos_proyecto_godot/graphics/characters/enemies/bat.tres"),
-	preload("res://recursos_proyecto_godot/graphics/characters/enemies/Gnomo.tres")
-]
-
 # enemy used in combat
-var enemy:Resource = null
+@export var enemy:Resource = null
 
 # math operations applied to this variables to avoid posible errors
 var current_player_health = 0
 var current_enemy_health = 0
 var defending = false
 
+var turn_counter = 0
+
 func _ready():
 	Player.movement = false
-	randomize()
-	enemy = enemy_resources[randi() % enemy_resources.size()]
 	
 	set_health($enemy_container/ProgressBar, enemy.health, enemy.health)
 	$enemy_container/enemy.texture = enemy.texture
 	current_enemy_health = enemy.health
 	
 	set_health($player_panel/player_data/ProgressBar, Player.current_health, Player.health)
+	Player.player_dmg = 0
 	current_player_health = Player.current_health
+	enemy.damage = Player.health
 	
 	$text_box.hide()
 	$action_panel.hide()
 	
-	display_text("¡Un %s ha aparecido!" % enemy.name)
+	display_text("%s: ¡Haber entrado aquí será la ultima decisión que tomes!" % enemy.name)
 	await textbox_closed
 	$action_panel.show()
 
@@ -51,10 +46,8 @@ func display_text(text):
 	$text_box/Label.text = text
 
 func _on_huir_pressed() -> void:
-	display_text("!La huida se realizó con éxito¡")
+	display_text("!La sala esta cerrada, no hay escape posible¡")
 	await textbox_closed
-	get_tree().change_scene_to_file("res://recursos_proyecto_godot/maps/firstCave.tscn")
-
 
 func _on_atacar_pressed() -> void:
 	display_text("!Golpeas con todas tus fuerzas¡")
@@ -70,11 +63,29 @@ func _on_atacar_pressed() -> void:
 	await textbox_closed
 	
 	if current_enemy_health == 0:
-		display_text("¡%s ha sido derrotado!" % enemy.name)
+		display_text("%s: ¡ES IMPOSIBLE!" % enemy.name)
+		await textbox_closed
+		
+		display_text("%s: ¡UN MALDITO PUEBLERINO HUMANO NO PUEDE DESTROZAR MIS PLANES!" % enemy.name)
+		await textbox_closed
+		
+		display_text("%s: ¡NO IMPORTA, POR MUCHO QUE LO INTENTEIS NO PODREIS PARAR SU LLEGADA JAJAJAJA!" % enemy.name)
 		await textbox_closed
 		
 		$AnimationPlayer.play("enemy_death")
 		await get_tree().create_timer(0.5)
+		
+		display_text("Player: Lo...")
+		await textbox_closed
+		
+		display_text("Player: ¿Lo conseguí?")
+		await textbox_closed
+		
+		display_text("Player: A que se refería con mi destino...")
+		await textbox_closed
+		
+		display_text("Payer: ¿Y la llegada de quíen?")
+		await textbox_closed
 		
 		display_text("¡Recibiste %d puntos de experiencia!" % enemy.experience)
 		await textbox_closed
@@ -108,26 +119,54 @@ func enemy_turn():
 		await get_tree().create_timer(0.5)
 	
 	else:
-		current_player_health = max(0, current_player_health - enemy.damage)
+		current_player_health = max(1, current_player_health - enemy.damage)
 		set_health($player_panel/player_data/ProgressBar, current_player_health, Player.health)
 
 		$AnimationPlayer.play("player_damaged")
 		await get_tree().create_timer(0.5)
-
-		display_text("%s realizó %d de daño" % [enemy.name, enemy.damage])
+		
+		if turn_counter == 0:
+			display_text("%s: Pronto acabará todo" % enemy.name)
+			await textbox_closed
+			display_text("¡Player: Maldita sea!")
+			await textbox_closed
+			display_text("??????: ...................")
+			await textbox_closed
+		elif turn_counter == 2:
+			Player.player_dmg = 70
+			display_text("??????: ...................")
+			await textbox_closed
+			display_text("??????: no te rindas hijo mío, este no es tu destino")
+			await textbox_closed
+		elif turn_counter == 3:
+			display_text("%s: ¡Porqué no mueres!" % enemy.name)
+			await textbox_closed
+		elif turn_counter == 5:
+			display_text("%s: ¡No quedará nada de tí maldito insecto!" % enemy.name)
+			await textbox_closed
+	
+	if turn_counter >= 2:
+		Player.current_health = Player.health
+		set_health($player_panel/player_data/ProgressBar, Player.current_health, Player.health)
+		current_player_health = Player.current_health
+		display_text("La fuerza desborda en tí")
 		await textbox_closed
-
+	
+	turn_counter += 1
 
 func _on_defensa_pressed() -> void:
-	defending = true
+	if turn_counter >= 2:
+		defending = true
 	
-	display_text("Te defiendes como puedes")
-	await textbox_closed
+		display_text("Player: ¡Mi vida no acabará aquí!")
+		await textbox_closed
 	
-	await get_tree().create_timer(0.5)
+		await get_tree().create_timer(0.5)
+	else:
+		display_text("El miedo te impide pensar con claridad")
+		await textbox_closed
 	
 	enemy_turn()
-
 
 func _on_pocion_pressed() -> void:
 	if Player.player_potion_counter >= 1:
@@ -145,7 +184,6 @@ func _on_pocion_pressed() -> void:
 	else:
 		display_text("No te quedan pociones...")
 		await textbox_closed
-		
 
 func exp_actualization():
 	Player.exp_to_level_up = Player.base_exp * (Player.factor ** (Player.player_level - 1))

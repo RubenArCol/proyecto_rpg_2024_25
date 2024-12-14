@@ -204,5 +204,5 @@ stream = ExtResource("4_h8jdl")
 [connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_interaction/Button" to="." method="_on_int_button_pressed"]
 [connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_pause/Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_inventory/Button" to="." method="_on_inv_button_pressed"]
-[connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_controles_pressed"]
 [connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_controles_pressed"]

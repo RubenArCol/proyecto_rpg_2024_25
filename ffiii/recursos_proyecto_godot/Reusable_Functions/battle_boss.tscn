@@ -1,0 +1,428 @@
+[gd_scene load_steps=23 format=3 uid="uid://c6vldbnwhsy5n"]
+
+[ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/battle_boss.gd" id="1_oubpc"]
+[ext_resource type="Texture2D" uid="uid://cbe5q3svl7mfy" path="res://recursos_proyecto_godot/graphics/bgd/bgd_battle.png" id="2_hd0eb"]
+[ext_resource type="Resource" uid="uid://d1cn2t8j5cn6o" path="res://recursos_proyecto_godot/graphics/characters/enemies/owlman.tres" id="2_nfmdp"]
+[ext_resource type="FontFile" uid="uid://cpblc3yh1v5nb" path="res://recursos_proyecto_godot/fonts/NESCyrillic.ttf" id="3_ipspw"]
+[ext_resource type="Texture2D" uid="uid://bqx1gve663kc4" path="res://recursos_proyecto_godot/graphics/characters/enemies/enemy_sprites/07.png" id="4_5sugy"]
+[ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="5_q83q1"]
+[ext_resource type="AudioStream" uid="uid://b6dgmc5ws6iyp" path="res://recursos_proyecto_godot/music/battle/boss_battle.mp3" id="7_ejijv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olu47"]
+bg_color = Color(0.698039, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsgjk"]
+bg_color = Color(0, 0.686275, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_036ot"]
+bg_color = Color(0, 0, 0, 0.462745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1fxc"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6th3a"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv0n8"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydfto"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttdu1"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3sic"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_ecgcl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemy_container/enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_udulo"]
+resource_name = "enemy_damaged"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemy_container/enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4owgf"]
+resource_name = "enemy_death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemy_container/enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7uioo"]
+resource_name = "player_damaged"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-7, -7), Vector2(0, 0), Vector2(7, 7), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_skhvn"]
+resource_name = "player_damaged_while_defending"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-3, -3), Vector2(0, 0), Vector2(3, 3), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w0fhf"]
+_data = {
+"RESET": SubResource("Animation_ecgcl"),
+"enemy_damaged": SubResource("Animation_udulo"),
+"enemy_death": SubResource("Animation_4owgf"),
+"player_damaged": SubResource("Animation_7uioo"),
+"player_damaged_while_defending": SubResource("Animation_skhvn")
+}
+
+[node name="battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oubpc")
+enemy = ExtResource("2_nfmdp")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -48.0
+offset_right = 1203.0
+offset_bottom = 697.0
+texture = ExtResource("2_hd0eb")
+
+[node name="enemy_container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -123.0
+offset_right = 118.5
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="enemy_container"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_olu47")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vsgjk")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="enemy_container/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/font = ExtResource("3_ipspw")
+theme_override_font_sizes/font_size = 23
+text = "Hp: 25/50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="enemy" type="TextureRect" parent="enemy_container"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_5sugy")
+stretch_mode = 5
+
+[node name="player_panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_036ot")
+
+[node name="player_data" type="HBoxContainer" parent="player_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 123.0
+offset_top = 12.0
+offset_right = 123.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Label" type="Label" parent="player_panel/player_data"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ipspw")
+theme_override_font_sizes/font_size = 60
+text = "Player"
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="player_panel/player_data" groups=["Player"]]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_olu47")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vsgjk")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="player_panel/player_data/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 1
+theme_override_fonts/font = ExtResource("3_ipspw")
+theme_override_font_sizes/font_size = 23
+text = "Hp: 25/50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="action_panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 116.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_036ot")
+
+[node name="actions" type="HBoxContainer" parent="action_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Atacar" type="Button" parent="action_panel/actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ipspw")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/hover = SubResource("StyleBoxFlat_s1fxc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s1fxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6th3a")
+text = "Atacar"
+
+[node name="Pocion" type="Button" parent="action_panel/actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ipspw")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/hover = SubResource("StyleBoxFlat_s1fxc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s1fxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mv0n8")
+text = "Pocion"
+
+[node name="Defensa" type="Button" parent="action_panel/actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ipspw")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ydfto")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydfto")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ydfto")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ttdu1")
+text = "Defensa"
+
+[node name="Huir" type="Button" parent="action_panel/actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ipspw")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ydfto")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydfto")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ydfto")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ttdu1")
+text = "Huir"
+
+[node name="text_box" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 163.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q3sic")
+
+[node name="Label" type="Label" parent="text_box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = -21.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ipspw")
+theme_override_font_sizes/font_size = 32
+text = "¡Ha aparecido un enemigo!"
+autowrap_mode = 3
+
+[node name="tick" type="Label" parent="text_box"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -33.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_ipspw")
+theme_override_font_sizes/font_size = 43
+text = ">"
+
+[node name="Audio" parent="." instance=ExtResource("5_q83q1")]
+stream = ExtResource("7_ejijv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w0fhf")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[connection signal="pressed" from="action_panel/actions/Atacar" to="." method="_on_atacar_pressed"]
+[connection signal="pressed" from="action_panel/actions/Pocion" to="." method="_on_pocion_pressed"]
+[connection signal="pressed" from="action_panel/actions/Defensa" to="." method="_on_defensa_pressed"]
+[connection signal="pressed" from="action_panel/actions/Huir" to="." method="_on_huir_pressed"]
