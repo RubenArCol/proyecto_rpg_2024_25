@@ -120,10 +120,8 @@ position = Vector2(1625, 212)
 position = Vector2(-114, -14)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("9_t88ap")]
-visible = false
 
 [node name="encounter_found" parent="." instance=ExtResource("10_oelc4")]
-visible = false
 
 [connection signal="body_entered" from="boss_zone" to="." method="_on_boss_zone_body_entered"]
 [connection signal="boss_encounter" from="boss_zone" to="." method="_on_boss_zone_boss_encounter"]
