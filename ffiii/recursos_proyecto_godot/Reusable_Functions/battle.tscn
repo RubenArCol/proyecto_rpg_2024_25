@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvr8lxu2syaqj"]
+[gd_scene load_steps=25 format=3 uid="uid://cvr8lxu2syaqj"]
 
 [ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/battle.gd" id="1_651hj"]
 [ext_resource type="Texture2D" uid="uid://cbe5q3svl7mfy" path="res://recursos_proyecto_godot/graphics/bgd/bgd_battle.png" id="1_o62un"]
@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://cpblc3yh1v5nb" path="res://recursos_proyecto_godot/fonts/NESCyrillic.ttf" id="2_wjdqw"]
 [ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="5_xp8rp"]
 [ext_resource type="AudioStream" uid="uid://dlmhdghri6y3c" path="res://recursos_proyecto_godot/music/battle/battle1.mp3" id="6_8x4au"]
+[ext_resource type="AudioStream" uid="uid://bghiqg74u4yca" path="res://recursos_proyecto_godot/music/battle/lvl_up.mp3" id="7_4h8eg"]
+[ext_resource type="AudioStream" uid="uid://c8x3o5q08xemt" path="res://recursos_proyecto_godot/music/battle/kill.mp3" id="8_6hwot"]
+[ext_resource type="AudioStream" uid="uid://blla2xcx4hbe8" path="res://recursos_proyecto_godot/music/battle/hit.mp3" id="8_26eew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olu47"]
 bg_color = Color(0.698039, 0, 0, 1)
@@ -410,6 +413,24 @@ text = ">"
 
 [node name="Audio" parent="." instance=ExtResource("5_xp8rp")]
 stream = ExtResource("6_8x4au")
+volume_db = -10.0
+
+[node name="Audio_lvl_up" parent="." instance=ExtResource("5_xp8rp")]
+stream = ExtResource("7_4h8eg")
+autoplay = false
+parameters/looping = false
+
+[node name="Audio_attack" parent="." instance=ExtResource("5_xp8rp")]
+stream = ExtResource("8_26eew")
+volume_db = -5.0
+autoplay = false
+parameters/looping = false
+
+[node name="Audio_kill" parent="." instance=ExtResource("5_xp8rp")]
+stream = ExtResource("8_6hwot")
+volume_db = -10.0
+autoplay = false
+parameters/looping = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=4 uid="uid://dipbiqooqjhtw"]
+[gd_scene load_steps=11 format=4 uid="uid://dipbiqooqjhtw"]
 
 [ext_resource type="TileSet" uid="uid://c4v0oo5crbx3f" path="res://recursos_proyecto_godot/graphics/tiles.tres" id="1_grfyp"]
 [ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/first_cave.gd" id="1_wihrd"]
 [ext_resource type="PackedScene" uid="uid://cw7aqtgxlk784" path="res://recursos_proyecto_godot/Reusable_Functions/Teleport.tscn" id="4_7gsix"]
 [ext_resource type="PackedScene" uid="uid://b7awi0tke1c0y" path="res://recursos_proyecto_godot/player/jugador.tscn" id="4_35y6m"]
-[ext_resource type="PackedScene" path="res://recursos_proyecto_godot/Reusable_Functions/chest.tscn" id="5_3i34o"]
+[ext_resource type="PackedScene" uid="uid://b242iclcamva4" path="res://recursos_proyecto_godot/Reusable_Functions/chest.tscn" id="5_3i34o"]
 [ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="5_jvnlg"]
 [ext_resource type="PackedScene" uid="uid://b5geksye26dcq" path="res://recursos_proyecto_godot/Reusable_Functions/battlezone.tscn" id="6_2fiy0"]
+[ext_resource type="PackedScene" uid="uid://d2mgettsn4rfj" path="res://recursos_proyecto_godot/Reusable_Functions/battlezone_boss.tscn" id="8_t8gca"]
+[ext_resource type="PackedScene" uid="uid://dvilooplmyw4p" path="res://recursos_proyecto_godot/Reusable_Functions/canvas_dialog.tscn" id="9_t88ap"]
+[ext_resource type="PackedScene" uid="uid://dh6jayxofltce" path="res://recursos_proyecto_godot/Reusable_Functions/encounter_found.tscn" id="10_oelc4"]
 
 [node name="FirstCave" type="Node2D"]
 script = ExtResource("1_wihrd")
@@ -70,6 +73,7 @@ position = Vector2(1512, 281)
 position = Vector2(-960, -329)
 
 [node name="Audio" parent="." instance=ExtResource("5_jvnlg")]
+volume_db = -10.0
 
 [node name="Chests" type="Node" parent="."]
 
@@ -103,16 +107,32 @@ position = Vector2(2.5, 1)
 position = Vector2(2, 5)
 flip_v = true
 
-[node name="Area2D" parent="." instance=ExtResource("6_2fiy0")]
-visible = false
+[node name="combat_zone" parent="." instance=ExtResource("6_2fiy0")]
 position = Vector2(-76, -174)
 
-[node name="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" parent="combat_zone" index="0"]
 position = Vector2(601, 307)
+
+[node name="boss_zone" parent="." instance=ExtResource("8_t8gca")]
+position = Vector2(1625, 212)
+
+[node name="CollisionShape2D" parent="boss_zone" index="0"]
+position = Vector2(-114, -14)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("9_t88ap")]
+visible = false
+
+[node name="encounter_found" parent="." instance=ExtResource("10_oelc4")]
+visible = false
+
+[connection signal="body_entered" from="boss_zone" to="." method="_on_boss_zone_body_entered"]
+[connection signal="boss_encounter" from="boss_zone" to="." method="_on_boss_zone_boss_encounter"]
 
 [editable path="Teleports/b1_b2"]
 [editable path="Teleports/b2_b1"]
 [editable path="Teleports/b2_b3"]
 [editable path="Teleports/b3_b2"]
 [editable path="Chests/Chest3"]
-[editable path="Area2D"]
+[editable path="combat_zone"]
+[editable path="boss_zone"]
+[editable path="encounter_found"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwohdgdcm06u4"]
+
+[ext_resource type="Texture2D" uid="uid://bl3ms5c3lqrdj" path="res://recursos_proyecto_godot/graphics/bgd/Fin.png" id="1_umq07"]
+[ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="2_y130s"]
+[ext_resource type="AudioStream" uid="uid://pluqrtcgn3ei" path="res://recursos_proyecto_godot/music/overworld/endgame.mp3" id="3_16v2w"]
+
+[node name="Game_finished" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -18.0
+offset_top = -11.0
+offset_right = 1171.33
+offset_bottom = 658.0
+texture = ExtResource("1_umq07")
+expand_mode = 3
+
+[node name="Audio" parent="." instance=ExtResource("2_y130s")]
+stream = ExtResource("3_16v2w")
+volume_db = -25.0

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://71gqidp7t6xh"]
+[gd_scene load_steps=11 format=3 uid="uid://b242iclcamva4"]
 
 [ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/chest.gd" id="1_3am8l"]
 [ext_resource type="Texture2D" uid="uid://b2p4pyngqo6cm" path="res://recursos_proyecto_godot/graphics/tiles/Chest.png" id="1_nnpmn"]
+[ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="3_777cn"]
+[ext_resource type="AudioStream" uid="uid://d2byfl6nc45jj" path="res://recursos_proyecto_godot/music/overworld/item_disc2.mp3" id="4_cqdal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oir6t"]
 size = Vector2(19, 28)
@@ -64,5 +66,10 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_m3je7")
 animation = &"closed"
 autoplay = "closed"
+
+[node name="Audio" parent="." instance=ExtResource("3_777cn")]
+stream = ExtResource("4_cqdal")
+autoplay = false
+parameters/looping = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

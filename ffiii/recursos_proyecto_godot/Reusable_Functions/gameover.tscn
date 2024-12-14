@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmu884icrnmmq"]
+
+[ext_resource type="Texture2D" uid="uid://bcmmhafcf0uad" path="res://recursos_proyecto_godot/graphics/bgd/Muelto.png" id="1_htemq"]
+[ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/gameover.gd" id="1_xmwqd"]
+[ext_resource type="PackedScene" uid="uid://cuv5ja76yjxrx" path="res://recursos_proyecto_godot/Reusable_Functions/audio.tscn" id="2_ndumf"]
+[ext_resource type="AudioStream" uid="uid://cdksegip8q72t" path="res://recursos_proyecto_godot/music/battle/gameover.mp3" id="3_ok6ax"]
+[ext_resource type="FontFile" uid="uid://cpblc3yh1v5nb" path="res://recursos_proyecto_godot/fonts/NESCyrillic.ttf" id="5_n2dop"]
+
+[node name="Gameover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xmwqd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -243.0
+offset_top = -105.0
+offset_right = 1357.0
+offset_bottom = 795.0
+texture = ExtResource("1_htemq")
+
+[node name="Audio" parent="." instance=ExtResource("2_ndumf")]
+stream = ExtResource("3_ok6ax")
+volume_db = -10.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -81.0
+offset_right = 213.0
+offset_bottom = -8.0
+grow_vertical = 0
+
+[node name="retry" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n2dop")
+text = "Reintentar"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n2dop")
+text = "Salir
+"
+
+[connection signal="pressed" from="VBoxContainer/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]

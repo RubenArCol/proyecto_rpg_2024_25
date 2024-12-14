@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvilooplmyw4p"]
+
+[ext_resource type="FontFile" uid="uid://cpblc3yh1v5nb" path="res://recursos_proyecto_godot/fonts/NESCyrillic.ttf" id="1_j7vgt"]
+[ext_resource type="Script" path="res://recursos_proyecto_godot/Scripts/canvas_dialog.gd" id="1_nbmfw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g665n"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_nbmfw")
+
+[node name="text_box" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 54)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 163.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g665n")
+
+[node name="Label2" type="Label" parent="text_box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -916.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("1_j7vgt")
+theme_override_font_sizes/font_size = 32
+text = "Texto de prueba"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="text_box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_j7vgt")
+theme_override_font_sizes/font_size = 32
+text = "Texto de prueba"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="tick" type="Label" parent="text_box"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -33.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_j7vgt")
+theme_override_font_sizes/font_size = 43
+text = ">"

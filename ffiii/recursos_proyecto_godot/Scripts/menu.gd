@@ -19,7 +19,6 @@ func _ready():
 func _on_btn_inicio_pressed() -> void:
 	get_tree().change_scene_to_file("res://recursos_proyecto_godot/maps/firstCave.tscn")
 
-
 func _interact_button(event: InputEvent) -> void:
 	if event.is_action_pressed("interaction"):
 		var focused = get_tree().get_focus_owner()  # obtains selected node

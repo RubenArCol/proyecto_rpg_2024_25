@@ -78,7 +78,6 @@ text = "Cerrar
 [node name="ControlsPopup" type="Popup" parent="."]
 auto_translate_mode = 1
 size = Vector2i(236, 303)
-visible = true
 
 [node name="VBoxControles" type="VBoxContainer" parent="ControlsPopup"]
 clip_contents = true
@@ -190,6 +189,7 @@ icon_alignment = 1
 
 [node name="Audio" parent="." instance=ExtResource("3_htms1")]
 stream = ExtResource("4_h8jdl")
+volume_db = -10.0
 
 [connection signal="pressed" from="VBoxContainer/btnInicio" to="." method="_on_btn_inicio_pressed"]
 [connection signal="pressed" from="VBoxContainer/btnOpciones" to="." method="_on_btn_opciones_pressed"]
@@ -204,5 +204,5 @@ stream = ExtResource("4_h8jdl")
 [connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_interaction/Button" to="." method="_on_int_button_pressed"]
 [connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_pause/Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="ControlsPopup/VBoxControles/HBox_inventory/Button" to="." method="_on_inv_button_pressed"]
-[connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_pressed"]
 [connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_controles_pressed"]
+[connection signal="pressed" from="ControlsPopup/VBoxControles/btnCerrarControles" to="." method="_on_btn_cerrar_pressed"]

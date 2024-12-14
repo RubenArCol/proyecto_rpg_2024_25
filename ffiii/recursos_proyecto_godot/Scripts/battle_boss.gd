@@ -53,6 +53,7 @@ func _on_atacar_pressed() -> void:
 	display_text("!Golpeas con todas tus fuerzas¡")
 	await textbox_closed
 	
+	$Audio_attack.play()
 	current_enemy_health = max(0, current_enemy_health - Player.player_dmg)
 	set_health($enemy_container/ProgressBar, current_enemy_health, enemy.health)
 	
@@ -72,8 +73,9 @@ func _on_atacar_pressed() -> void:
 		display_text("%s: ¡NO IMPORTA, POR MUCHO QUE LO INTENTEIS NO PODREIS PARAR SU LLEGADA JAJAJAJA!" % enemy.name)
 		await textbox_closed
 		
+		$Audio_kill.play()
 		$AnimationPlayer.play("enemy_death")
-		await get_tree().create_timer(0.5)
+		await get_tree().create_timer(0.5).timeout
 		
 		display_text("Player: Lo...")
 		await textbox_closed
@@ -84,7 +86,7 @@ func _on_atacar_pressed() -> void:
 		display_text("Player: A que se refería con mi destino...")
 		await textbox_closed
 		
-		display_text("Payer: ¿Y la llegada de quíen?")
+		display_text("Player: ¿Y la llegada de quíen?")
 		await textbox_closed
 		
 		display_text("¡Recibiste %d puntos de experiencia!" % enemy.experience)
@@ -94,17 +96,19 @@ func _on_atacar_pressed() -> void:
 		
 		if (Player.player_current_exp >= Player.exp_to_level_up):
 			Player.player_level += 1
+			$Audio_lvl_up.play()
 			display_text("¡Subiste a nivel %d!" % Player.player_level)
 			await textbox_closed
 			
 			exp_actualization()
-			
-			print("%d es la nueva cantidad de experiencia para subir" % Player.exp_to_level_up)
+		
+		display_text("Derrotaste a %s" % enemy.name)
+		await textbox_closed
+		get_tree().change_scene_to_file("res://recursos_proyecto_godot/Reusable_Functions/game_finished.tscn")
 		
 		Player.in_battle = false
 		Player.current_health = current_player_health
 		Player.global_position = Global.player_position
-		get_tree().change_scene_to_file("res://recursos_proyecto_godot/maps/firstCave.tscn")
 		return  
 		
 	enemy_turn()

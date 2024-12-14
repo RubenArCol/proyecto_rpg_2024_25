@@ -17,9 +17,9 @@ func _process(_delta):
 		open_chest()
 
 func open_chest():
-	print("pulsado")
 	animated_sprite_2d.play("closedopen")
 	open = true
+	$Audio.play()
 	print("%d pociones antes de cofre" % Player.player_potion_counter)
 	Player.player_potion_counter += 1
 	print("%d pociones despues de cofre" % Player.player_potion_counter)
