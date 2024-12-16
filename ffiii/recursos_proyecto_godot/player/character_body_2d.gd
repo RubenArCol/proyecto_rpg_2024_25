@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # movement
 var direccion:Vector2 = Vector2.ZERO
-var velocidad:int = 70
+var velocidad:int = 30
 var movement:bool = true
 
 # variables to star encounters
